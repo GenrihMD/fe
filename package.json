@@ -1,0 +1,10 @@
+{
+  "name": "fe",
+  "version": "1.0.0",
+  "description": "Frontend cli tool",
+  "main": "index.js",
+  "repository": "git@git.mobiledep.ru:frontend/front-cli.git",
+  "author": "laamin <genrih.md@gmail.com>",
+  "license": "-",
+  "private": true
+}
