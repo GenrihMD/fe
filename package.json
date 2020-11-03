@@ -8,6 +8,7 @@
   "license": "-",
   "private": true,
   "dependencies": {
+    "chalk": "^4.1.0",
     "execa": "^4.1.0",
     "listr": "^0.14.3"
   }
