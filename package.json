@@ -6,5 +6,9 @@
   "repository": "git@git.mobiledep.ru:frontend/front-cli.git",
   "author": "laamin <genrih.md@gmail.com>",
   "license": "-",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "execa": "^4.1.0",
+    "listr": "^0.14.3"
+  }
 }
