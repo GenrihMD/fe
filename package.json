@@ -6,6 +6,9 @@
   "bin": {
     "fe": "./index.js"
   },
+  "scripts": {
+    "preinstall": "npm i"
+  },
   "repository": "git@git.mobiledep.ru:frontend/front-cli.git",
   "author": "laamin <genrih.md@gmail.com>",
   "license": "-",
