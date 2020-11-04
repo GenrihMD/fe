@@ -1,8 +1,13 @@
+#!/usr/bin/env node
+
 const execa = require('execa')
+const commander = require('commander')
 const Listr = require('listr')
 const chalk = require('chalk')
 
-console.log(chalk.blue('FE is a frontend cli toolbox!'))
+console.log(chalk.blue('Welcome to FE, the frontend cli toolbox!'))
+
+
 
 const tasks = new Listr([
     {

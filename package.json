@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "Frontend cli tool",
   "main": "index.js",
+  "bin": {
+    "fe": "./index.js"
+  },
   "repository": "git@git.mobiledep.ru:frontend/front-cli.git",
   "author": "laamin <genrih.md@gmail.com>",
   "license": "-",
   "private": true,
   "dependencies": {
     "chalk": "^4.1.0",
+    "commander": "^6.2.0",
     "execa": "^4.1.0",
     "listr": "^0.14.3"
   }
