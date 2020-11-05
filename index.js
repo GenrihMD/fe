@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// vendors
+// Vendors
 const
-    execa = require('execa'),
     commander = require('commander'),
     chalk = require('chalk')    
-// scripts
+
+// Scripts
 const
-    init = require('./tasks/init')
+    run = require('./runer')
 
 const
     welcome = `   ___        
@@ -19,3 +19,4 @@ console.log(
     chalk.blue( welcome )
 )
 
+run('init')

@@ -6,9 +6,6 @@
   "bin": {
     "fe": "./index.js"
   },
-  "scripts": {
-    "preinstall": "npm i"
-  },
   "repository": "git@git.mobiledep.ru:frontend/front-cli.git",
   "author": "laamin <genrih.md@gmail.com>",
   "license": "-",
@@ -17,6 +14,8 @@
     "chalk": "^4.1.0",
     "commander": "^6.2.0",
     "execa": "^4.1.0",
-    "listr": "^0.14.3"
+    "js-yaml": "^3.14.0",
+    "listr": "^0.14.3",
+    "lodash": "^4.17.20"
   }
 }
