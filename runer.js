@@ -2,8 +2,8 @@
 const
     { command: sh } = require('execa'),
     { at }          = require('lodash'),
+    { blue }        = require('chalk'),
     listr           = require('listr'),
-    chalk           = require('chalk'),
     fs              = require('fs'),
     yaml            = require('js-yaml')
     
@@ -14,6 +14,12 @@ const
         
 // Functions
 const
+    welcome = config => {
+        if ('description' in config) {
+            console.log( 'Run:', blue(config.description) )
+        }
+    },
+    
     load = command => {
         try {
             const commandConfig = fs.readFileSync(`./tasks/${command}.yml`, 'utf8')
@@ -38,6 +44,7 @@ const
     exec = argv => {
         const path = argv.join('.')
         const config = load(argv[0])
+        welcome(config)
         const parts = at(config, path)
         for (const part of parts) {
             new listr(getTasks(part)).run().catch(e => { })
