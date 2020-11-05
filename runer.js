@@ -22,7 +22,7 @@ const
     
     load = command => {
         try {
-            const commandConfig = fs.readFileSync(`./tasks/${command}.yml`, 'utf8')
+            const commandConfig = fs.readFileSync(`${__dirname}/tasks/${command}.yml`, 'utf8')
             return yaml.safeLoad(commandConfig)
         } catch (e) {
             throw e
