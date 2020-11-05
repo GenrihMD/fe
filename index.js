@@ -1,29 +1,32 @@
 #!/usr/bin/env node
 // Vendors
 const
-    yargs = require('yargs'),
-    chalk = require('chalk'),    
-    { hideBin } = require('yargs/helpers')
+    { blue } = require('chalk'),    
+    { hideBin } = require('yargs/yargs')
 
-// Scripts
+// Script runner
 const
-    run = require('./runer')
+    run = require('./runner')
 
 const
+    help =  `usage: fe [command]`,
     welcome = `   ___        
  .'  _|.-----.
  |   _||  -__|
  |__|  |_____| The frontend cli toolbox!
-`,
-    help =  `usage: fe [command]`
+`
+    
+init: {
+    // some init do
+}
 
 main: {
-    const argv = hideBin(process.argv)
+    const command = hideBin(process.argv)
     
-    if (argv.length < 1) {
-        console.log(chalk.blue( welcome ))
-        console.log( help, '\n' )
+    if (command.length < 1) {
+        console.log( blue(welcome))
+        console.log(help, '\n')
     } else {
-        run(argv)
+        run(command)
     }
 }
