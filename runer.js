@@ -14,22 +14,24 @@ const
         
 // Functions
 const
+    // Print welcome message with the task description
     welcome = config => {
         if ('description' in config) {
             console.log( 'Run:', blue(config.description) )
         }
     },
     
+    // Load and parse the config file 
     load = command => {
         try {
             const commandConfig = fs.readFileSync(`${__dirname}/tasks/${command}.yml`, 'utf8')
             return yaml.safeLoad(commandConfig)
-        } catch (e) {
-            throw e
-            // throw new Error('Config loading error')
+        } catch {
+            throw new Error('Config loading error')
         }
     },
 
+    // Form a set of tasks
     getTasks = config => {
         const tasks = []
         for (const key in config) compile: {
@@ -41,7 +43,8 @@ const
         return tasks
     }
 
-    exec = argv => {
+    // Run a fe command
+    run = argv => {
         const path = argv.join('.')
         const config = load(argv[0])
         welcome(config)
@@ -51,4 +54,4 @@ const
         }        
     }
 
-module.exports = exec
+module.exports = run
