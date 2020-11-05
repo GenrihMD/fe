@@ -1,19 +1,21 @@
 #!/usr/bin/env node
+// vendors
+const
+    execa = require('execa'),
+    commander = require('commander'),
+    chalk = require('chalk')    
+// scripts
+const
+    init = require('./tasks/init')
 
-const execa = require('execa')
-const commander = require('commander')
-const Listr = require('listr')
-const chalk = require('chalk')
+const
+    welcome = `   ___        
+ .'  _|.-----.
+ |   _||  -__|
+ |__|  |_____| The frontend cli toolbox!
+ `
 
-console.log(chalk.blue('Welcome to FE, the frontend cli toolbox!'))
+console.log(
+    chalk.blue( welcome )
+)
 
-
-
-const tasks = new Listr([
-    {
-		title: 'Success',
-		task: () => 'Foo'
-	},
-])
-
-tasks.run().catch( e => { } )
