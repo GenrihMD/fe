@@ -1,16 +1,16 @@
 // Vendors
 const
     { command: sh } = require('execa'),
-    listr = require('listr'),
-    chalk = require('chalk'),
-    fs = require('fs'),
-    yaml = require('js-yaml'),
-    _ = require('lodash')
+    { at }          = require('lodash'),
+    listr           = require('listr'),
+    chalk           = require('chalk'),
+    fs              = require('fs'),
+    yaml            = require('js-yaml')
     
 // Helpers    
 const 
     stdout = r => console.log(r.stdout),
-    shell = c => sh( c ).then( null )
+    shell  = c => sh( c ).then( null )
         
 // Functions
 const
@@ -38,7 +38,7 @@ const
     exec = argv => {
         const path = argv.join('.')
         const config = load(argv[0])
-        const parts = _.at(config, path)
+        const parts = at(config, path)
         for (const part of parts) {
             new listr(getTasks(part)).run().catch(e => { })
         }        
