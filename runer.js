@@ -1,6 +1,6 @@
 // Vendors
 const
-    { command } = require('execa'),
+    { command: sh } = require('execa'),
     listr = require('listr'),
     chalk = require('chalk'),
     fs = require('fs'),
@@ -9,10 +9,9 @@ const
     
 // Helpers    
 const 
-    writeExecStdout = r => console.log(r.stdout),
-    sh = c => command( c ).then( writeExecStdout )
-    
-
+    stdout = r => console.log(r.stdout),
+    shell = c => sh( c ).then( null )
+        
 // Functions
 const
     load = command => {
@@ -30,20 +29,19 @@ const
         for (const key in config) compile: {
             tasks.push({
                 title: key,
-                task: () => config[key].map( sh )
+                task: ctx => config[key].map( shell )
             })
         }
         return tasks
     }
 
-    exec = script => {
-        const path = script.replace(' ', '.')
-        const command = script.split(' ')[0]
-        const config = load(command)
+    exec = argv => {
+        const path = argv.join('.')
+        const config = load(argv[0])
         const parts = _.at(config, path)
-        for (const part of parts){
-            new listr(getTasks(part)).run().catch(e => { })}
-        
+        for (const part of parts) {
+            new listr(getTasks(part)).run().catch(e => { })
+        }        
     }
 
 module.exports = exec

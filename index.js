@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Vendors
 const
-    commander = require('commander'),
-    chalk = require('chalk')    
+    yargs = require('yargs'),
+    chalk = require('chalk'),    
+    { hideBin } = require('yargs/helpers')
 
 // Scripts
 const
@@ -16,9 +17,15 @@ const
  `
 
 main: {
-    console.log(
-        chalk.blue( welcome )
-    )
 
-    run('init')
+    const argv = hideBin(process.argv)
+    
+    if (!argv) {
+        console.log(
+            chalk.blue( argv )
+        )
+    } else {
+        run(argv)
+    }
+   
 }
