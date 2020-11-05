@@ -1,8 +1,7 @@
 # init new project config
 version: 1
+description: Init standart FE project
 init:
   Install dependencies:
     - yarn add vue
     - yarn add vuex
-  Copy configs:
-    - cp . .
