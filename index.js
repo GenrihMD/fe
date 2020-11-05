@@ -14,18 +14,16 @@ const
  .'  _|.-----.
  |   _||  -__|
  |__|  |_____| The frontend cli toolbox!
- `
+`,
+    help =  `usage: fe [command]`
 
 main: {
-
     const argv = hideBin(process.argv)
     
-    if (!argv) {
-        console.log(
-            chalk.blue( argv )
-        )
+    if (argv.length < 1) {
+        console.log(chalk.blue( welcome ))
+        console.log( help, '\n' )
     } else {
         run(argv)
     }
-   
 }
