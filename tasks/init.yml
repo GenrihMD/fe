@@ -2,6 +2,17 @@
 version: 1
 description: Init standart FE project
 init:
-  Install dependencies:
+  Install project dependencies:
     - yarn add vue
     - yarn add vuex
+    - yarn add core-js
+    - yarn add lodash
+    - yarn add rxjs
+    - yarn add voca
+    - yarn add vue-class-component
+    - yarn add vue-property-decorator 
+    - yarn add vue-router
+    - yarn add vue-virtual-scroller
+    - yarn add vuex-class
+  # Install develop dependencies:
+  #   -
