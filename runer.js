@@ -24,7 +24,7 @@ const
         for (const key in config) {
             tasks.push({
                 title: key,
-                task: () => config[key].map( c => execa(c) )
+                task: () => config[key].map(c => { } )
             })
         }
         return tasks
@@ -34,9 +34,10 @@ const
         const path = script.replace(' ', '.')
         const command = script.split(' ')[0]
         const config = load(command)
-        const commands = _.at(config, path)
-        // console.log(getTasks(commands))
-        new listr(getTasks(commands)).run().catch(e => { })
+        const parts = _.at(config, path)
+        for (const part of parts){
+            new listr(getTasks(part)).run().catch(e => { })}
+        
     }
 
 module.exports = exec
