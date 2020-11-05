@@ -7,6 +7,12 @@ const
     yaml = require('js-yaml'),
     _ = require('lodash')
     
+// Helpers    
+const 
+    writeExecStdout = r => console.log(r.stdout),
+    execInShall = c => execa.shell( c ).then( writeExecStdout )
+    
+
 // Functions
 const
     load = command => {
@@ -21,10 +27,10 @@ const
 
     getTasks = config => {
         const tasks = []
-        for (const key in config) {
+        for (const key in config) compile: {
             tasks.push({
                 title: key,
-                task: () => config[key].map(c => { } )
+                task: () => config[key].map( execInShall )
             })
         }
         return tasks

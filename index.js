@@ -15,8 +15,10 @@ const
  |__|  |_____| The frontend cli toolbox!
  `
 
-console.log(
-    chalk.blue( welcome )
-)
+main: {
+    console.log(
+        chalk.blue( welcome )
+    )
 
-run('init')
+    run('init')
+}

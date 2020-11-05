@@ -1,6 +1,8 @@
 # init new project config
 version: 1
 init:
-  - Install dependencies:
+  Install dependencies:
     - yarn add vue
     - yarn add vuex
+  Copy configs:
+    - cp . .
