@@ -1,6 +1,6 @@
 // Vendors
 const
-    execa = require('execa'),
+    { command } = require('execa'),
     listr = require('listr'),
     chalk = require('chalk'),
     fs = require('fs'),
@@ -10,7 +10,7 @@ const
 // Helpers    
 const 
     writeExecStdout = r => console.log(r.stdout),
-    execInShall = c => execa.shell( c ).then( writeExecStdout )
+    sh = c => command( c ).then( writeExecStdout )
     
 
 // Functions
@@ -30,7 +30,7 @@ const
         for (const key in config) compile: {
             tasks.push({
                 title: key,
-                task: () => config[key].map( execInShall )
+                task: () => config[key].map( sh )
             })
         }
         return tasks
