@@ -9,7 +9,7 @@ const
     dirname = require('path').dirname
     
 const tasker = module.exports = {}
-    
+
 // Helpers    
 const 
     stdout = r => console.log(r.stdout),
@@ -18,10 +18,8 @@ const
 // Functions
 const
     // Print welcome message with the task description
-    welcome = config => {
-        if ('description' in config) {
-            console.log( 'Run:', blue(config.description) )
-        }
+    welcome = statement => {
+        console.log( 'Run:', blue(statement) )
     },
     
     // Load and parse the config file 
@@ -44,13 +42,17 @@ const
             })
         }
         return tasks
+    },
+
+    getDescription = obj => {
+        return obj.description ?? '' 
     }
 
     // Run a fe command
     run = argv => {
         const path = argv.join('.')
         const config = load(argv[0])
-        welcome(config)
+        welcome( getDescription( config ) )
         const parts = at(config, path)
         for (const part of parts) {
             new listr(getTasks(part)).run().catch(e => { })
