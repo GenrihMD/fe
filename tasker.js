@@ -14,24 +14,9 @@ const tasker = module.exports = {}
 const 
     stdout = r => console.log(r.stdout),
     shell  = c => sh( c ).then( null )
-        
+
 // Functions
 const
-    // Print welcome message with the task description
-    welcome = statement => {
-        console.log( 'Run:', blue(statement) )
-    },
-    
-    // Load and parse the config file 
-    load = command => {
-        try {
-            const commandConfig = fs.readFileSync(`${__dirname}/tasks/${command}.yml`, 'utf8')
-            return yaml.safeLoad(commandConfig)
-        } catch {
-            throw new Error('Config loading error')
-        }
-    },
-
     // Form a set of tasks
     getTasks = config => {
         const tasks = []
@@ -46,7 +31,22 @@ const
 
     getDescription = obj => {
         return obj.description ?? '' 
-    }
+    },
+    
+    // Print welcome message with the task description
+    welcome = statement => {
+        console.log( 'Run:', blue(statement) )
+    },
+    
+    // Load and parse the config file 
+    load = command => {
+        try {
+            const commandConfig = fs.readFileSync(`${__dirname}/tasks/${command}.yml`, 'utf8')
+            return yaml.safeLoad(commandConfig)
+        } catch {
+            throw new Error('Config loading error')
+        }
+    },
 
     // Run a fe command
     run = argv => {
