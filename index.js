@@ -6,7 +6,7 @@ const
 
 // Script runner
 const
-    tasker = require('./ tasker')
+    tasker = require('./tasker')
 
 const
     help =  `usage: fe [command]`,
