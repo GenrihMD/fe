@@ -6,7 +6,7 @@ const
 
 // Script runner
 const
-    run = require('./runner')
+    tasker = require('./ tasker')
 
 const
     help =  `usage: fe [command]`,
@@ -27,6 +27,6 @@ main: {
         console.log( blue(welcome))
         console.log(help, '\n')
     } else {
-        run(command)
+        tasker.run(command)
     }
 }

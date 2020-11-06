@@ -1,11 +1,14 @@
-// Vendors
+// Vendor imports
 const
-    { command: sh } = require('execa'),
-    { at }          = require('lodash'),
-    { blue }        = require('chalk'),
-    listr           = require('listr'),
-    fs              = require('fs'),
-    yaml            = require('js-yaml')
+    sh      = require('execa').command,
+    at      = require('lodash').at,
+    blue    = require('chalk').blue,
+    listr   = require('listr'),
+    fs      = require('fs'),
+    yaml    = require('js-yaml'),
+    dirname = require('path').dirname
+    
+const tasker = module.exports = {}
     
 // Helpers    
 const 
@@ -54,4 +57,6 @@ const
         }        
     }
 
-module.exports = run
+public: {
+    tasker.run = run
+}
