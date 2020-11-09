@@ -6,7 +6,7 @@ const
     listr   = require('listr'),
     fs      = require('fs'),
     yaml    = require('js-yaml'),
-    dirname = require('path').dirname
+    resolve = require('path').resolve
     
 const tasker = module.exports = {}
 
@@ -29,9 +29,7 @@ const
         return tasks
     },
 
-    getDescription = obj => {
-        return obj.description ?? '' 
-    },
+    getDescription = obj =>  obj.description ? obj.description : '',
     
     // Print welcome message with the task description
     welcome = statement => {
@@ -41,7 +39,10 @@ const
     // Load and parse the config file 
     load = command => {
         try {
-            const commandConfig = fs.readFileSync(`${__dirname}/tasks/${command}.yml`, 'utf8')
+            const commandConfig = fs.readFileSync(
+                resolve(__dirname, `./tasks/${command}.yml`),
+                'utf8'
+            )
             return yaml.safeLoad(commandConfig)
         } catch {
             throw new Error('Config loading error')
