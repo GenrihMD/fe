@@ -1,6 +1,17 @@
 const 
-    getCopy = () => {},
-    getMove = () => {},
-    getAdd = () => {},
-    getRemove = () => {},
-    getRename = () => {},
+    getCopy = () => {
+        return async () => {}
+    },
+    getMove = () => {
+        return async () => {}
+    },
+    getAdd = () => {
+        return async () => {}
+    },
+    getRemove = () => {
+        return async () => {}
+    },
+    getRename = () => {
+        return async () => {}
+    },
+    
