@@ -1,17 +1,32 @@
+const {
+    copyFileSync,
+} = require('fs')
+
+const parser = module.exports = {}
+
 const 
-    getCopy = () => {
+    getCopy = (src, dist) => {
         return async () => {}
     },
-    getMove = () => {
+    getMove = (src, dist) => {
         return async () => {}
     },
-    getAdd = () => {
+    getAdd = (name) => {
         return async () => {}
     },
-    getRemove = () => {
+    getRemove = (name) => {
         return async () => {}
     },
-    getRename = () => {
-        return async () => {}
+    getRename = (oldName, newName) => {
+        return async () => {
+
+        }
     },
     
+const 
+    parse = (line) => {
+        const words = line.split(' ')
+        const action = words[0]
+        const args = words.slice(1, words.lenght)
+
+    }
