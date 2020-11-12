@@ -1,3 +1,6 @@
+const parser = module.exports = {}
+
+// Action getters
 const 
     getCopy = () => {
         return async () => {}
@@ -14,4 +17,7 @@ const
     getRename = () => {
         return async () => {}
     },
+    getExec = () => {
+        return async () => {}
+    }
     
