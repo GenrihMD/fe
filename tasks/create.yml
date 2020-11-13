@@ -1,0 +1,22 @@
+version: 2
+description: Init standart FE project
+create:
+  - description: Create config files
+    tasks:
+      - init project.json
+  - description: Install project dependencies
+    tasks:
+      - add vue
+      - add vuex
+      - add core-js
+      - add lodash
+      - add rxjs
+      - add voca
+      - add vue-class-component
+      - add vue-property-decorator
+      - add vue-router
+      - add vue-virtual-scroller
+      - add vuex-class
+  - description: Install development dependencies
+    tasks:
+      - add @vue-cli
