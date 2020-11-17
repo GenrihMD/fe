@@ -3,7 +3,7 @@ const {
      renameSync,
      rmSync,
     }  = require('fs'),
-    sh = require('execa').command,
+    sh = require('execa').command
 
 const parser = module.exports = {}
 
@@ -24,6 +24,11 @@ const
     }
 
 const 
+    // No operations
+    getNop = () => {
+        return async () => { }
+    },
+
     // The copy action getter
     getCopy = args => {
         checkArgsNum(args, 2)
@@ -71,7 +76,7 @@ const
         return async () => {
             renameSync( src, dist )
         }
-    },
+    }
 
 const
     actionGetters = {
@@ -91,14 +96,19 @@ const
         if (action in actionGetters) {
             return actionGetters[ action ]( args )
         } else {
-            throw new Error('Invalid action')
+            return getNop()
+            // throw new Error(`Invalid action: ${action}`)
         }
     },
 
     parseTask = task => {
-        return task.map( line => parseAction( line )  )
+        return task.actions.map( line => parseAction( line )  )
+    },
+
+    parse = tasks => {
+        return tasks.map( task => parseTask( task ) ) 
     }
 
 public: {
-    parser.parse = parseTask
+    parser.parse = parse
 }

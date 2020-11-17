@@ -6,7 +6,8 @@ const
     listr = require('listr'),
     fs = require('fs'),
     yaml = require('js-yaml'),
-    resolve = require('path').resolve
+    resolve = require('path').resolve,
+    parse = require('./parser').parse
 
 const tasker = module.exports = {}
 
@@ -53,14 +54,14 @@ const
     run = argv => {
         const path = argv.join('.')
         const config = load(argv[0])
+        const parts = at(config, path)
         if (config.version == 1) {
             welcome(getDescription(config))
-            const parts = at(config, path)
             for (const part of parts) {
                 new listr(getTasks(part)).run().catch(e => {})
             }
         } else {
-            console.log( config )
+            console.log( parse(parts[0]) )
         }
     }
 
