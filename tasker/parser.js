@@ -19,10 +19,10 @@ const
     // The copy action getter
     getCopy = args => {
         checkArgsNum(args, 2)
-        // If the args num is not right then exeption will trows thru funcs
+        // If the args num is not right then the exeption will trows thru funcs
         // and next lines will not executions
         return async () => {
-            
+
         }
     },
 
