@@ -95,8 +95,8 @@ const
         }
     },
 
-    parseTask = () => {
-
+    parseTask = task => {
+        return task.map( line => parseAction( line )  )
     }
 
 public: {
