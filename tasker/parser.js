@@ -5,23 +5,61 @@ const {
 const parser = module.exports = {}
 
 const 
-    getCopy = (src, dist) => {
+    checkArgsNum = (args, rightNum) => {
+        // If args is not array then length is equal to undefined 
+        // and is not equal to any number
+        if (args.lengh === rightNum) {
+            return true
+        } else {
+            throw new Error('Too few arguments')
+        }
+    }
+
+const 
+    // The copy action getter
+    getCopy = args => {
+        checkArgsNum(args, 2)
+        // If the args num is not right then exeption will trows thru funcs
+        // and next lines will not executions
+        return async () => {
+            
+        }
+    },
+
+    // The move action getter
+    getMove = args => {
+        checkArgsNum( args, 2 )
         return async () => {}
     },
-    getMove = (src, dist) => {
+
+    // The add action getter
+    getAdd = args => {
+        checkArgsNum( args, 2 )
         return async () => {}
     },
-    getAdd = (name) => {
+
+    // The remove action getter
+    getRemove = args => {
+        checkArgsNum( args, 2 )
         return async () => {}
     },
-    getRemove = (name) => {
-        return async () => {}
-    },
-    getRename = (oldName, newName) => {
+
+    // The rename action getter
+    getRename = args => {
+        checkArgsNum( args, 2 )
         return async () => {
 
         }
     },
+
+const
+    actionGetters = {
+        add: getAdd,
+        remove: getRemove,
+        move: getMove,
+        rename: getRename,
+        copy: getCopy,
+    }
     
 const 
     parse = (line) => {
@@ -29,12 +67,10 @@ const
         const action = words[0]
         const args = words.slice(1, words.lenght)
 
-        switch (action) {
-            case ( 'add' ): return getAdd(args[0])
-            case ( 'remove' ): return getRemove(args[0])
-            case ( 'move' ): return getMove(args[0], args[1])
-            case ( 'rename' ): return getRename(args[0], args[1])
-            case ( 'copy' ): return getCopy(args[0], args[1])
+        if (action in actionGetters) {
+            return actionGetters[ action ]( args )
+        } else {
+            throw new Error('Invalid action')
         }
     }
 
