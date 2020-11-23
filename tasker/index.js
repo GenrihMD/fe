@@ -61,7 +61,12 @@ const
                 new listr(getTasks(part)).run().catch(e => {})
             }
         } else {
-            console.log( parse(parts[0]) )
+            const actionsTree = parse(parts[0])
+            for (const actions of actionsTree) {
+                for (const action of actions) { 
+                    action()
+                }         
+            }
         }
     }
 
