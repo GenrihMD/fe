@@ -76,6 +76,18 @@ const
         return async () => {
             renameSync( src, dist )
         }
+    },
+    
+    getTemplate = args => {
+        return async () => { 
+
+        }
+    },
+
+    getUnpack = args => {
+        return async () => { 
+
+        }
     }
 
 const
